@@ -10,6 +10,9 @@ const AuthWrapperAdmin = lazy(() =>
 const LayoutAdmin = lazy(() => import("../components/Layout/LayoutAdmin"));
 const LoginAdmin = lazy(() => import("../pages/LoginAdmin"));
 const Dashboard = lazy(() => import("../pages/DashBoard"));
+const ManageProduct = lazy(() => import("../pages/ManageProduct"));
+const ManageUser = lazy(() => import("../pages/ManageUser"));
+const ManageOrder = lazy(() => import("../pages/ManageOrder"));
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticatedAdmin, isLoading } = useSelector(
@@ -66,7 +69,28 @@ const routes = [
     pageTitle: "TEELAB | Dashboard",
     layoutTitle: "THÔNG TIN THỐNG KÊ",
     wrapper: AdminLayoutWrapper,
-  }
+  },
+  {
+    path: "/admin/users",
+    element: <ManageUser />,
+    pageTitle: "TEELAB | Quản lý người dùng",
+    layoutTitle: "QUẢN LÝ NGƯỜI DÙNG",
+    wrapper: AdminLayoutWrapper,
+  },
+  {
+    path: "/admin/orders",
+    element: <ManageOrder />,
+    pageTitle: "TEELAB | Quản lý đơn hàng",
+    layoutTitle: "QUẢN LÝ ĐƠN HÀNG",
+    wrapper: AdminLayoutWrapper,
+  },
+  {
+    path: "/admin/products",
+    element: <ManageProduct />,
+    pageTitle: "TEELAB | Quản lý sản phẩm",
+    layoutTitle: "QUẢN LÝ SẢN PHẨM",
+    wrapper: AdminLayoutWrapper,
+  },
 ];
 
 const AdminRoutes = routes.map(
