@@ -15,6 +15,17 @@ const CreateProduct = lazy(() => import("../pages/CreateProduct"));
 const ManageUser = lazy(() => import("../pages/ManageUser"));
 const ManageOrder = lazy(() => import("../pages/ManageOrder"));
 const ManageCategory = lazy(() => import("../pages/ManageCategory"));
+const ManageReview = lazy(() => import("../pages/ManageReview"));
+const ManagePromotion = lazy(() =>
+  import("../pages/ManagePromotion").then((module) => ({
+    default: module.ManagePromotion,
+  }))
+);
+const CreatePromotion = lazy(() =>
+  import("../pages/ManagePromotion").then((module) => ({
+    default: module.CreatePromotion,
+  }))
+);
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticatedAdmin, isLoading } = useSelector(
@@ -105,6 +116,27 @@ const routes = [
     element: <ManageCategory />,
     pageTitle: "TEELAB | Quản lý danh mục",
     layoutTitle: "QUẢN LÝ DANH MỤC",
+    wrapper: AdminLayoutWrapper,
+  },
+  {
+    path: "/admin/reviews",
+    element: <ManageReview />,
+    pageTitle: "TEELAB | Quản lý đánh giá",
+    layoutTitle: "QUẢN LÝ ĐÁNH GIÁ",
+    wrapper: AdminLayoutWrapper,
+  },
+  {
+    path: "/admin/promotions",
+    element: <ManagePromotion />,
+    pageTitle: "TEELAB | Quản lý khuyến mãi",
+    layoutTitle: "QUẢN LÝ KHUYẾN MÃI",
+    wrapper: AdminLayoutWrapper,
+  },
+  {
+    path: "/admin/promotions/create",
+    element: <CreatePromotion />,
+    pageTitle: "TEELAB | Thêm khuyến mãi",
+    layoutTitle: "THÊM MỚI KHUYẾN MÃI",
     wrapper: AdminLayoutWrapper,
   },
 ];

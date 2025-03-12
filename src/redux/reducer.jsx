@@ -4,6 +4,8 @@ import orderReducer from "./order/order.slice";
 import userReducer from "./user/user.slice";
 import productReducer from "./product/product.slice";
 import categoryReducer from "./category/category.slice";
+import reviewReducer from "./review/review.slice";
+import promotionReducer from "./promotion/promotion.slice";
 
 const reducer = {
     auth: authReducer,
@@ -12,6 +14,8 @@ const reducer = {
     user: userReducer,
     product: productReducer,
     category: categoryReducer,
+    review: reviewReducer,
+    promotion: promotionReducer
 };
 
 export default reducer;
