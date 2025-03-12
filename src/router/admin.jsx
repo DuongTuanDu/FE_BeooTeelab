@@ -11,8 +11,10 @@ const LayoutAdmin = lazy(() => import("../components/Layout/LayoutAdmin"));
 const LoginAdmin = lazy(() => import("../pages/LoginAdmin"));
 const Dashboard = lazy(() => import("../pages/DashBoard"));
 const ManageProduct = lazy(() => import("../pages/ManageProduct"));
+const CreateProduct = lazy(() => import("../pages/CreateProduct"));
 const ManageUser = lazy(() => import("../pages/ManageUser"));
 const ManageOrder = lazy(() => import("../pages/ManageOrder"));
+const ManageCategory = lazy(() => import("../pages/ManageCategory"));
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticatedAdmin, isLoading } = useSelector(
@@ -89,6 +91,20 @@ const routes = [
     element: <ManageProduct />,
     pageTitle: "TEELAB | Quản lý sản phẩm",
     layoutTitle: "QUẢN LÝ SẢN PHẨM",
+    wrapper: AdminLayoutWrapper,
+  },
+  {
+    path: "/admin/products/create",
+    element: <CreateProduct />,
+    pageTitle: "TEELAB | Thêm sản phẩm",
+    layoutTitle: "THÊM MỚI SẢN PHẨM",
+    wrapper: AdminLayoutWrapper,
+  },
+  {
+    path: "/admin/categories",
+    element: <ManageCategory />,
+    pageTitle: "TEELAB | Quản lý danh mục",
+    layoutTitle: "QUẢN LÝ DANH MỤC",
     wrapper: AdminLayoutWrapper,
   },
 ];

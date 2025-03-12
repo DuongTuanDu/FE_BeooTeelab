@@ -25,3 +25,39 @@ export const getCategoryList = createAsyncThunk(
     }
   }
 );
+
+export const createCategory = createAsyncThunk(
+  "category/createCategory",
+  async (payload) => {
+    try {
+      return await axios.post("/admin/categories", payload);
+    } catch (error) {
+      message.error(error.response.data.message);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const updateCategory = createAsyncThunk(
+  "category/updateCategory",
+  async ({ id, data }) => {
+    try {
+      return await axios.put(`/admin/categories/${id}`, data);
+    } catch (error) {
+      message.error(error.response.data.message);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const deleteCategory = createAsyncThunk(
+  "category/deleteCategory",
+  async (id) => {
+    try {
+      return await axios.delete(`/admin/categories/${id}`);
+    } catch (error) {
+      message.error(error.response.data.message);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
