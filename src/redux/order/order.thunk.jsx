@@ -103,8 +103,8 @@ export const getOrderList = createAsyncThunk(
         try {
             const res = await axios.get(
                 `/admin/orders?page=${payload.page}&pageSize=${payload.pageSize
-                }&customerName=${payload.customerName}&fromDate=${payload.fromDate
-                }&toDate=${payload.toDate}&paymentMethod=${payload.paymentMethod || ""
+                }&customerName=${payload.customerName || ""}&fromDate=${payload.fromDate || ""
+                }&toDate=${payload.toDate || ""}&paymentMethod=${payload.paymentMethod || ""
                 }&status=${payload.status || ""}`
             );
             return res;

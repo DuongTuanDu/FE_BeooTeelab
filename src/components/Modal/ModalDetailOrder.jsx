@@ -62,11 +62,11 @@ const ModalDetailOrder = ({
                     getOrderList({
                         page,
                         pageSize,
-                        customerName,
-                        status,
-                        fromDate,
-                        toDate,
-                        paymentMethod,
+                        // customerName,
+                        // status,
+                        // fromDate,
+                        // toDate,
+                        // paymentMethod,
                     })
                 );
                 setOpen(false);
