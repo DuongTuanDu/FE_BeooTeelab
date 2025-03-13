@@ -61,3 +61,14 @@ export const deleteCategory = createAsyncThunk(
     }
   }
 );
+
+export const getAllCategory = createAsyncThunk(
+  "category/getAllCategory",
+  async (_, { rejectWithValue }) => {
+    try {
+      return await axios.get("/categories");
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
