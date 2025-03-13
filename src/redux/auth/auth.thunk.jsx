@@ -60,6 +60,18 @@ export const getAccountCustomer = createAsyncThunk(
     }
 );
 
+export const updateAccount = createAsyncThunk(
+    "auth/updateAccount",
+    async (payload, { rejectWithValue }) => {
+        try {
+            return await axios.put("/account", payload);
+        } catch (error) {
+            message.error(error.response.data.message);
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
+
 export const sendOtp = createAsyncThunk(
     "auth/sendOtp",
     async (payload, { rejectWithValue }) => {

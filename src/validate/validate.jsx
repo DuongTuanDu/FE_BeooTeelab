@@ -46,3 +46,12 @@ export const validateResetPasswordSchema = Yup.object({
     password: Yup.string().required("Vui lòng nhập mật khẩu"),
     rePassword: Yup.string().required("Vui lòng nhập lại mật khẩu"),
 });
+
+export const validateReviewSchema = Yup.object({
+    rate: Yup.number()
+        .required("Vui lòng chọn mức độ hài lòng của bạn")
+        .min(1, "Vui lòng chọn mức độ hài lòng của bạn")
+        .max(5, "Mức độ hài lòng không hợp lệ")
+        .integer("Mức độ hài lòng phải là số nguyên"),
+    comment: Yup.string().required("Vui lòng nhập nội dung đánh giá"),
+});

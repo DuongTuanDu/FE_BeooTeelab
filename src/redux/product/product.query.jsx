@@ -13,10 +13,43 @@ export const productApi = createApi({
                 url: `/admin/products?page=${page}&pageSize=${pageSize}&search=${search}`,
                 method: "GET",
             }),
-        })
+        }),
+        getFilterOptions: builder.query({
+            query: () => ({
+                url: "/filter-options",
+                method: "GET",
+            }),
+            transformResponse: (response) => response.data,
+        }),
+        getProductsByPromotion: builder.query({
+            query: ({
+                priceRange = [],
+                categories = [],
+                rating = "",
+                colors = [],
+                page = 1,
+                pageSize = 12,
+            }) => {
+                const queryString = new URLSearchParams({
+                    priceRange,
+                    categories,
+                    rating,
+                    colors,
+                    page,
+                    pageSize,
+                }).toString();
+                return {
+                    url: `/products-by-promotion/?${queryString}`,
+                    method: "GET",
+                };
+            },
+            transformResponse: (response) => response.data,
+        }),
     }),
 });
 
 export const {
-    useGetAllProductsQuery
+    useGetAllProductsQuery,
+    useGetFilterOptionsQuery,
+    useGetProductsByPromotionQuery,
 } = productApi;

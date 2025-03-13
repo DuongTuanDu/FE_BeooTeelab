@@ -8,8 +8,10 @@ import { Navigate } from "react-router-dom";
 const LayoutUser = lazy(() => import("../components/Layout/LayoutUser"));
 const AuthWrapper = lazy(() => import("../components/Auth/AuthWapper"));
 const HomePage = lazy(() => import("../pages/HomePage"));
-// const Account = lazy(() => import("../pages/Account"));
+const Account = lazy(() => import("../pages/Account"));
 const Auth = lazy(() => import("../pages/Auth"));
+const Size = lazy(() => import("../pages/Size"));
+const Promotion = lazy(() => import("../pages/Promotion"));
 
 // Route protection
 const ProtectedRoute = ({ children }) => {
@@ -51,15 +53,25 @@ const routes = [
     ),
     pageTitle: "TEELAB",
   },
-//   {
-//     path: "/account",
-//     element: (
-//       <ProtectedRoute>
-//         <Account />
-//       </ProtectedRoute>
-//     ),
-//     pageTitle: "TEELAB - Tài Khoản",
-//   }
+    {
+      path: "/account",
+      element: (
+        <ProtectedRoute>
+          <Account />
+        </ProtectedRoute>
+      ),
+      pageTitle: "TEELAB - Tài Khoản",
+    },
+  {
+    path: "/size",
+    element: <Size />,
+    pageTitle: "TEELAB - Bảng Size",
+  },
+  {
+    path: "/promotions",
+    element: <Promotion />,
+    pageTitle: "TEELAB - Sản phẩm khuyến mãi",
+  },
 ];
 
 const CustomerRoutes = routes.map(({ path, element, pageTitle }) => ({
