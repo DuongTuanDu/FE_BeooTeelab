@@ -8,6 +8,7 @@ import { Navigate } from "react-router-dom";
 const LayoutUser = lazy(() => import("../components/Layout/LayoutUser"));
 const AuthWrapper = lazy(() => import("../components/Auth/AuthWapper"));
 const HomePage = lazy(() => import("../pages/HomePage"));
+const Detail = lazy(() => import("../pages/Detail"));
 const Account = lazy(() => import("../pages/Account"));
 const Category = lazy(() => import("../pages/Category"));
 const Auth = lazy(() => import("../pages/Auth"));
@@ -53,6 +54,11 @@ const routes = [
       </AuthRoute>
     ),
     pageTitle: "TEELAB",
+  },
+  {
+    path: "/detail/:slug",
+    element: <Detail />,
+    pageTitle: "TEELAB - Chi Tiết Sản Phẩm",
   },
   {
     path: "/account",
