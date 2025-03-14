@@ -43,9 +43,63 @@ export const cartSlice = createSlice({
       state.cart.totalAmount = calculateTotalAmount(state.cart.products);
       set("cart", state.cart);
     },
+    incrementQuantity: (state, action) => {
+      const { productId, size, color } = action.payload;
+      const item = state.cart.products.find(
+        (item) =>
+          item.productId === productId &&
+          item.size === size &&
+          item.color === color
+      );
+      if (item) {
+        item.quantity += 1;
+        state.cart.totalAmount = calculateTotalAmount(state.cart.products);
+        set("cart", state.cart);
+      }
+    },
+    decrementQuantity: (state, action) => {
+      const { productId, size, color } = action.payload;
+      const itemIndex = state.cart.products.findIndex(
+        (item) =>
+          item.productId === productId &&
+          item.size === size &&
+          item.color === color
+      );
+      if (itemIndex !== -1) {
+        if (state.cart.products[itemIndex].quantity > 1) {
+          state.cart.products[itemIndex].quantity -= 1;
+        } else {
+          state.cart.products.splice(itemIndex, 1);
+        }
+        state.cart.totalAmount = calculateTotalAmount(state.cart.products);
+        set("cart", state.cart);
+      }
+    },
+    removeFromCart: (state, action) => {
+      const { productId, size, color } = action.payload;
+      state.cart.products = state.cart.products.filter(
+        (item) =>
+          !(
+            item.productId === productId &&
+            item.size === size &&
+            item.color === color
+          )
+      );
+      state.cart.totalAmount = calculateTotalAmount(state.cart.products);
+      set("cart", state.cart);
+    },
+    clearCart: (state) => {
+      state.cart.products = [];
+      state.cart.totalAmount = 0;
+      set("cart", state.cart);
+    },
   },
 });
 export const {
   addToCart,
+  clearCart,
+  incrementQuantity,
+  decrementQuantity,
+  removeFromCart,
 } = cartSlice.actions;
 export default cartSlice.reducer;

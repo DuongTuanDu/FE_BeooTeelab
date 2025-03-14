@@ -255,7 +255,7 @@ const Detail = () => {
                 items={[
                     {
                         title: (
-                            <div className="text-slate-600 text-sm sm:text-base cursor-pointer">
+                            <div className="text-slate-600 text-sm sm:text-base cursor-pointer" onClick={() => navigate("/")}>
                                 <HomeOutlined /> Trang chủ
                             </div>
                         ),

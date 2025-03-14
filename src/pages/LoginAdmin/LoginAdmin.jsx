@@ -40,8 +40,6 @@ const LoginAdmin = () => {
 
         dispatch(loginAdmin(input)).then((res) => {
             if (res.payload.success) {
-                console.log("res.payload", res.payload);
-                
                 set("ACCESS_TOKEN_ADMIN", res.payload.data.accessToken);
                 dispatch(getAccountAdmin()).then(() => {
                     message.success("Đăng nhập thành công");

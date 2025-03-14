@@ -79,7 +79,9 @@ const HeaderCustomer = () => {
                 searchResults?.map((product) => (
                     <div
                         key={product._id}
-                        onClick={() => {
+                        onMouseDown={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
                             navigate(`/detail/${product.slug}`);
                             setSearch("");
                             setSearchVisible(false);

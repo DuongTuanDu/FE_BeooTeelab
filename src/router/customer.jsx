@@ -14,6 +14,8 @@ const Category = lazy(() => import("../pages/Category"));
 const Auth = lazy(() => import("../pages/Auth"));
 const Size = lazy(() => import("../pages/Size"));
 const Promotion = lazy(() => import("../pages/Promotion"));
+const Cart = lazy(() => import("../pages/Cart"));
+const OrderReturn = lazy(() => import("../pages/OrderReturn"));
 
 // Route protection
 const ProtectedRoute = ({ children }) => {
@@ -83,6 +85,20 @@ const routes = [
     path: "/promotions",
     element: <Promotion />,
     pageTitle: "TEELAB - Sản phẩm khuyến mãi",
+  },
+  {
+    path: "/cart",
+    element: <Cart />,
+    pageTitle: "TEELAB - Giỏ Hàng",
+  },
+  {
+    path: "/order-return",
+    element: (
+      <ProtectedRoute>
+        <OrderReturn />
+      </ProtectedRoute>
+    ),
+    pageTitle: "TEELAB - Thông báo đặt hàng",
   },
 ];
 
