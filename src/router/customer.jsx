@@ -9,6 +9,7 @@ const LayoutUser = lazy(() => import("../components/Layout/LayoutUser"));
 const AuthWrapper = lazy(() => import("../components/Auth/AuthWapper"));
 const HomePage = lazy(() => import("../pages/HomePage"));
 const Account = lazy(() => import("../pages/Account"));
+const Category = lazy(() => import("../pages/Category"));
 const Auth = lazy(() => import("../pages/Auth"));
 const Size = lazy(() => import("../pages/Size"));
 const Promotion = lazy(() => import("../pages/Promotion"));
@@ -53,15 +54,20 @@ const routes = [
     ),
     pageTitle: "TEELAB",
   },
-    {
-      path: "/account",
-      element: (
-        <ProtectedRoute>
-          <Account />
-        </ProtectedRoute>
-      ),
-      pageTitle: "TEELAB - Tài Khoản",
-    },
+  {
+    path: "/account",
+    element: (
+      <ProtectedRoute>
+        <Account />
+      </ProtectedRoute>
+    ),
+    pageTitle: "TEELAB - Tài Khoản",
+  },
+  {
+    path: "/category/:slug",
+    element: <Category />,
+    pageTitle: "TEELAB - Danh Mục Sản Phẩm",
+  },
   {
     path: "/size",
     element: <Size />,

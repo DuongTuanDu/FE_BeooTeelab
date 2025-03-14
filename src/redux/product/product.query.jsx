@@ -21,6 +21,31 @@ export const productApi = createApi({
             }),
             transformResponse: (response) => response.data,
         }),
+        getProductsByCategory: builder.query({
+            query: ({
+                slug = "",
+                priceRange = [],
+                categories = [],
+                rating = "",
+                colors = [],
+                page = 1,
+                pageSize = 12,
+            }) => {
+                const queryString = new URLSearchParams({
+                    priceRange,
+                    categories,
+                    rating,
+                    colors,
+                    page,
+                    pageSize,
+                }).toString();
+                return {
+                    url: `/products-by-category/${slug}?${queryString}`,
+                    method: "GET",
+                };
+            },
+            transformResponse: (response) => response.data,
+        }),
         getProductsByPromotion: builder.query({
             query: ({
                 priceRange = [],
@@ -51,5 +76,6 @@ export const productApi = createApi({
 export const {
     useGetAllProductsQuery,
     useGetFilterOptionsQuery,
+    useGetProductsByCategoryQuery,
     useGetProductsByPromotionQuery,
 } = productApi;

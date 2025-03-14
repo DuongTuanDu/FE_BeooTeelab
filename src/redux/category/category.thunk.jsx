@@ -26,6 +26,17 @@ export const getCategoryList = createAsyncThunk(
   }
 );
 
+export const getAllCategory = createAsyncThunk(
+  "category/getAllCategory",
+  async (_, { rejectWithValue }) => {
+    try {
+      return await axios.get("/categories");
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 export const createCategory = createAsyncThunk(
   "category/createCategory",
   async (payload) => {
@@ -57,17 +68,6 @@ export const deleteCategory = createAsyncThunk(
       return await axios.delete(`/admin/categories/${id}`);
     } catch (error) {
       message.error(error.response.data.message);
-      return rejectWithValue(error.response.data);
-    }
-  }
-);
-
-export const getAllCategory = createAsyncThunk(
-  "category/getAllCategory",
-  async (_, { rejectWithValue }) => {
-    try {
-      return await axios.get("/categories");
-    } catch (error) {
       return rejectWithValue(error.response.data);
     }
   }
