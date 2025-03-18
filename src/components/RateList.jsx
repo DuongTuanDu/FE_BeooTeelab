@@ -21,8 +21,9 @@ import {
 
 const RateList = ({ slug }) => {
   const dispatch = useDispatch();
-  const { reviews, pagination, isLoading, averageRating, rateDistribution } =
-    useSelector((state) => state.review);
+  const { reviews, pagination, isLoading, averageRating, rateDistribution } = useSelector((state) => state.review);
+  console.log("reviews", reviews);
+  
   const [reviewFilter, setReviewFilter] = useState({
     rate: "",
     hasImage: "",
@@ -140,8 +141,8 @@ const RateList = ({ slug }) => {
             fullFill
               ? "#cd3f34"
               : partialFill
-              ? `url(#grad-${index})`
-              : "#597e6a"
+                ? `url(#grad-${index})`
+                : "#597e6a"
           }
         ></path>
       </svg>
